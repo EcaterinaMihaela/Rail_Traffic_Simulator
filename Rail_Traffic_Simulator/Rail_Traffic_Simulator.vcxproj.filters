@@ -47,5 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="trains.txt" />
+    <Text Include="ticket.txt" />
   </ItemGroup>
 </Project>

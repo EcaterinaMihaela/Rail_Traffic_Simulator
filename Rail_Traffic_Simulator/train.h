@@ -58,7 +58,7 @@ public:
 	static vector<Train> readFromFile(ifstream& file);
 
 	// Extraction operator for reading a train from file
-	friend istream& operator>>(istream& in, Train& train) 
+	friend istream& operator>>(istream& in, Train& train)
 	{
 		in >> train.trainType >> train.id >> train.route >> train.carriageCount >> train.kilometers >> train.departureTime >> train.arrivalTime;
 		return in;

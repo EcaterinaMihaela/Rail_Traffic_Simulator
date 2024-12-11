@@ -9,3 +9,7 @@ string Station::getArrivalTime() const
 {
     return arrivalTime;
 }
+int Station::getStationLine() const
+{
+    return stationLine;
+}

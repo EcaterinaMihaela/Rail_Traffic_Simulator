@@ -20,15 +20,15 @@ Train::Train(const string& trainType, int id, const string& route, int carriageC
     outFile << "STOP" << endl;
 }*/
 
-vector<Train> Train::readFromFile(ifstream& file) 
+vector<Train> Train::readFromFile(ifstream& file)
 {
     vector<Train> trains;
     string line;
 
-    while (getline(file, line)) 
+    while (getline(file, line))
     {
         // Skip empty lines
-        if (line.empty()) 
+        if (line.empty())
         {
             continue;
         }
@@ -36,7 +36,7 @@ vector<Train> Train::readFromFile(ifstream& file)
         stringstream ss(line);
 
         // Read the first train information
-        string trainType, departureTime, arrivalTime;
+        string trainType, departureTime, arrivalTime, route;
         int id, carriageCount;
         float kilometers;
 
@@ -44,7 +44,6 @@ vector<Train> Train::readFromFile(ifstream& file)
         ss >> trainType >> id;
 
         // Read the route, which in quotes
-        string route;
         getline(ss, route, '\"'); // Ignore the first double quote
         getline(ss, route, '\"'); // Read route up to the second double quote
 
@@ -53,22 +52,24 @@ vector<Train> Train::readFromFile(ifstream& file)
 
         // Read stations
         vector<Station> intermediateStations;
-        while (getline(file, line) && line != "STOP") 
+        while (getline(file, line) && line != "STOP")
         {
             // Skip any empty lines between stations
-            if (line.empty()) 
+            if (line.empty())
             {
                 continue;
             }
 
             stringstream ss_station(line);
-            string station_name, arrivalTime_station;
+            string stationName, arrivalTimeForStation;
+            int stationLine;
 
-            getline(ss_station, station_name, ',');  // Read the station name
-            getline(ss_station, arrivalTime_station); // Read arrival time
+            getline(ss_station, stationName, ',');  // Read station name
+            getline(ss_station, arrivalTimeForStation, ','); // Read arrival time
+            ss_station >> stationLine; // Read station line
 
             // Add station to the vector
-            intermediateStations.push_back(Station(station_name, arrivalTime_station));
+            intermediateStations.push_back(Station(stationName, arrivalTimeForStation, stationLine));
         }
 
         // Create Train object with all information
@@ -82,7 +83,7 @@ vector<Train> Train::readFromFile(ifstream& file)
 }
 
 
-void Train::display() const 
+void Train::display() const
 {
     cout << "Train " << trainType << " " << id << ", operates on route " << route
         << ", with " << carriageCount << " carriages, covering a distance of "
@@ -94,11 +95,12 @@ void Train::display() const
     {
         cout << "No intermediate stations." << endl;
     }
-    else 
+    else
     {
-        for (size_t i = 0; i < intermediateStations.size(); ++i)
+        for (const auto& station : intermediateStations)
         {
-            cout << "-" << intermediateStations[i].getName() << " at " << intermediateStations[i].getArrivalTime() << endl;
+            cout << "- " << station.getName() << " at " << station.getArrivalTime()
+                << " (line " << station.getStationLine() << ")\n";
         }
         cout << endl;
     }
@@ -172,7 +174,7 @@ void Train::setArrivalTime(string arrivalTime)
 // For carriages
 const vector<Carriage>& Train::getCarriages() const
 {
-    return carriages;  
+    return carriages;
 }
 
 void Train::generateRandomCarriages()   //for entire train,generate and display all the carriages

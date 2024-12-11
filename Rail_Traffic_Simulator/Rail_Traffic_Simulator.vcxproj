@@ -140,6 +140,7 @@
     <ClInclude Include="carriage.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="ticket.txt" />
     <Text Include="trains.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,6 +1,7 @@
 #include "ticket.h"
 #include <iostream>
-
+#include <fstream>  // Include this header for file I/O
+#include <sstream>  // Include this for stringstream
 using namespace std;
 
 int Ticket::getTicketID() const
@@ -47,7 +48,8 @@ void Ticket::applyDiscount(int carriageClass) {
 }
 
 
-void Ticket::displayTicketDetails(int carriageNumber, int chosenSeat) const {
+void Ticket::displayTicketDetails(int carriageNumber, int chosenSeat) const
+{
     cout << "\n======================================Ticket purchased!================================================\n";
     cout << "Category: " << category << "\n";
     cout << "Ticket ID: " << ticketID << endl;
@@ -61,4 +63,33 @@ void Ticket::displayTicketDetails(int carriageNumber, int chosenSeat) const {
     cout << "Carriage: " << carriageNumber << endl;
     cout << "Seat: " << chosenSeat << endl;
     cout << "=========================================================================================================";
+}
+
+void Ticket::saveTicketToFile(int carriageNumber, int chosenSeat)
+{
+    ofstream outFile("ticket.txt", ios::app); // Open file in append mode
+    if (outFile.is_open()) {
+        stringstream ss;
+        ss << "\n======================================Ticket purchased!================================================\n";
+        ss << "Category: " << category << "\n";
+        ss << "Ticket ID: " << ticketID << endl;
+        ss << "Base Price: " << basePrice << "\n";
+        ss << "Discount: " << discount * 100 << "%\n";
+        ss << "Final Price: " << getPrice() << "\n";
+        ss << "Route: " << route << "\n";
+        ss << "Train: " << trainID << "\n";
+        ss << "Purchase Date: " << purchaseDate << "\n";
+        ss << "Ticket Status: " << ticketStatus << "\n";
+        ss << "Carriage: " << carriageNumber << endl;
+        ss << "Seat: " << chosenSeat << endl;
+        ss << "=========================================================================================================";
+
+        // Write to file
+        outFile << ss.str() << endl;
+
+        outFile.close(); // Close the file after writing
+    }
+    else {
+        cerr << "Error opening tickets file for writing!\n";
+    }
 }

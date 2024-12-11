@@ -9,7 +9,10 @@ int Carriage::getFreeSeats() const
 {
     return freeSeats;
 }
-
+void Carriage::setFreeSeats(int freeSeats)
+{
+    this->freeSeats = freeSeats;
+}
 int Carriage::getNumber() const
 {
     return carriageNumber;
@@ -37,4 +40,9 @@ void Carriage::displayCarriages() const {
     cout << "Occupied seats: " << occupiedSeats << endl;
     cout << "Free seats: " << freeSeats << endl;
     cout << "------------------------" << endl;
+}
+void Carriage::reduceFreeSeats(Carriage& carriage) {
+    if (carriage.getFreeSeats() > 0) {
+        carriage.setFreeSeats(carriage.getFreeSeats() - 1);
+    }
 }

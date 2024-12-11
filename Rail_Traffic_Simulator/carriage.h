@@ -23,8 +23,10 @@ public:
     int getTotalSeats() const;
     int getOccupiedSeats() const;
     int getFreeSeats() const;
+    void setFreeSeats(int freeSeats);
 
     void displayCarriages() const;
+    void reduceFreeSeats(Carriage& carriage);
 };
 
 #endif

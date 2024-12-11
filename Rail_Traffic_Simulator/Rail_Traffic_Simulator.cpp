@@ -7,7 +7,7 @@
 #include <vector>
 #include <sstream>
 
-#define basePrice 50
+#define basePrice 1.6
 
 using namespace std;
 
@@ -24,15 +24,15 @@ int main()
     vector<Train> trains = Train::readFromFile(File);
 
     /*// Display readen trains     //FOR DEBUGGING
-    std::cout << "Available trains:\n";
+    cout << "Available trains:\n";
     for (const auto& train : trains) {
         train.display();
-        std::cout << "\n";
+        cout << "\n";
 
         // Display intermediate stations
-        std::cout << "Stations:\n";
+        cout << "Stations:\n";
         for (const auto& station : train.getStations()) {
-            std::cout << "- " << station.getName() << " at " << station.getArrivalTime() << "\n";
+            cout << "- " << station.getName() << " at " << station.getArrivalTime() << "\n";
         }
     }*/
 
@@ -71,9 +71,15 @@ int main()
         {
         case 1: // My train-INFO
         {
-            int searchByID;
-            cout << "Enter the train ID: \n";
+            // Display the available trains
+            cout << "Available train IDs:\n";
+            for (const auto& train : trains)
+            {
+                cout << "- Train ID: " << train.getID() << "\n";
+            }
 
+            int searchByID;
+            cout << "\nEnter the train ID,for infos: \n";
             cin >> searchByID;
 
             bool found = false;
@@ -89,57 +95,154 @@ int main()
 
             if (!found)   //if train not found
             {
-                cout << "Train with ID " << searchByID << " was not found!\n";
+                cout << "\nTrain with ID " << searchByID << " was not found!\n";
             }
             break;
         }
 
         case 2: // Choose route
         {
-            string departureStation, arrivalStation;
+            cout << "Choose an route:" << endl;
+            cout << "1 - Choose the route from the list!" << endl;
+            cout << "2 - Choose the route by entering the name of the departure/arrival station!" << endl;
 
-            cout << "Enter the departure station: ";
-            getline(cin, departureStation);
+            int subOption;
+            cin >> subOption;
+            cin.ignore();
 
-            cout << "Enter the arrival station: ";
-            getline(cin, arrivalStation);
-
-            cout << "Available trains from \"" << departureStation << "\" to \"" << arrivalStation << "\":" << endl;
-            bool found = false;
-
-            for (const auto& train : trains)   //search in train vector
+            switch (subOption)
             {
-                const auto& stations = train.getStations();
-                bool departureFound = false;   //at first departure is not found
+            case 1:   //Chose the route from the list
+            {
 
-                // Search for the departure station
-                for (const auto& station : stations)
+                // Display all the available routes
+                cout << "\nAvailable routes:\n";
+                vector<pair<string, string>> routes; // Store unique routes
+
+                for (const auto& train : trains)
                 {
-                    if (station.getName() == departureStation)
+                    const auto& stations = train.getStations();
+                    for (size_t i = 0; i < stations.size(); ++i)
                     {
-                        departureFound = true; // Found the departure station
-                    }
-
-                    // If departure was found, check for the arrival station
-                    if (departureFound)
-                    {
-                        // Check if it's the arrival station
-                        if (station.getName() == arrivalStation)
+                        for (size_t j = i + 1; j < stations.size(); ++j)
                         {
-                            // Display correct time for the departure station
-                            cout << "Train " << train.getType() << " " << train.getID()
-                                << " departs at " << train.getArrivalTimeForStation(departureStation) // departure time
-                                << " and will arrive at the destination at " << station.getArrivalTime() << ".\n"; // arrival time
-                            found = true;
-                            break; // Found the arrival station
+                            pair<string, string> route = { stations[i].getName(), stations[j].getName() };
+                            if (find(routes.begin(), routes.end(), route) == routes.end())
+                            {
+                                routes.push_back(route); // Add the route if it doesn't exist
+                            }
                         }
                     }
                 }
+
+                // Display the routes
+                for (size_t i = 0; i < routes.size(); ++i)
+                {
+                    cout << i + 1 << ". " << routes[i].first << " -> " << routes[i].second << "\n";
+                }
+
+                // Let the user select a route
+                int routeChoice;
+                cout << "Enter the number corresponding to the route: ";
+                cin >> routeChoice;
+
+                if (routeChoice < 1 || routeChoice > static_cast<int>(routes.size()))
+                {
+                    throw out_of_range("Invalid choice! Please try again.");
+                }
+
+                // Store the selected departure/arrival stations
+                string departureStation = routes[routeChoice - 1].first;
+                string arrivalStation = routes[routeChoice - 1].second;
+
+                // Afișăm trenurile disponibile pentru ruta selectată
+                cout << "Available trains from \"" << departureStation << "\" to \"" << arrivalStation << "\":" << endl;
+                bool found = false;
+
+                // Căutăm trenuri care parcurg ruta selectată
+                for (const auto& train : trains)
+                {
+                    const auto& stations = train.getStations();
+                    bool departureFound = false;
+
+                    for (const auto& station : stations)
+                    {
+                        if (station.getName() == departureStation)
+                        {
+                            departureFound = true; // Stația de plecare găsită
+                        }
+
+                        if (departureFound && station.getName() == arrivalStation)
+                        {
+                            // Afișăm detaliile trenului
+                            cout << "\nTrain " << train.getType() << " " << train.getID()
+                                << " departs at " << train.getArrivalTimeForStation(departureStation)
+                                << " and arrives at " << station.getArrivalTime() << ".\n";
+                            found = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (!found)
+                {
+                    cout << "No trains available from \"" << departureStation << "\" to \"" << arrivalStation << "\"!\n";
+                }
+                break;
             }
 
-            if (!found)
+            case 2: // Choose route manual,by entering the strings
             {
-                cout << "No trains available from \"" << departureStation << "\" to \"" << arrivalStation << "\"!\n";
+                string departureStation, arrivalStation;
+
+                cout << "Enter the departure station: ";
+                getline(cin, departureStation);
+
+                cout << "Enter the arrival station: ";
+                getline(cin, arrivalStation);
+
+                cout << "Available trains from \"" << departureStation << "\" to \"" << arrivalStation << "\":" << endl;
+                bool found = false;
+
+                for (const auto& train : trains)   //search in train vector
+                {
+                    const auto& stations = train.getStations();
+                    bool departureFound = false;   //at first departure is not found
+
+                    // Search for the departure station
+                    for (const auto& station : stations)
+                    {
+                        if (station.getName() == departureStation)
+                        {
+                            departureFound = true; // Found the departure station
+                        }
+
+                        // If departure was found, check for the arrival station
+                        if (departureFound)
+                        {
+                            // Check if it's the arrival station
+                            if (station.getName() == arrivalStation)
+                            {
+                                // Display correct time for the departure station
+                                cout << "Train " << train.getType() << " " << train.getID()
+                                    << " departs at " << train.getArrivalTimeForStation(departureStation) // departure time
+                                    << " and will arrive at the destination at " << station.getArrivalTime() << ".\n"; // arrival time
+                                found = true;
+                                break; // Found the arrival station
+                            }
+                        }
+                    }
+                }
+
+                if (!found)
+                {
+                    cout << "No trains available from \"" << departureStation << "\" to \"" << arrivalStation << "\"!\n";
+                }
+                break;
+            }
+            default:
+                cout << "Invalid option, please try again." << endl;
+                break;
             }
             break;
         }
@@ -172,13 +275,16 @@ int main()
                 cout << "Available trains from \"" << departureStation << "\" to \"" << arrivalStation << "\":" << endl;
                 bool found = false;
 
-                for (const auto& train : trains) {
+                for (const auto& train : trains)
+                {
                     const auto& stations = train.getStations();
                     bool departureFound = false;
 
                     // Search for departure station
-                    for (const auto& station : stations) {
-                        if (station.getName() == departureStation) {
+                    for (const auto& station : stations)
+                    {
+                        if (station.getName() == departureStation)
+                        {
                             departureFound = true; // departure station found
                         }
 
@@ -192,10 +298,12 @@ int main()
                     }
                 }
 
-                if (!found) {
+                if (!found)
+                {
                     cout << "There are not available trains from \"" << departureStation << "\" to \"" << arrivalStation << "\"!\n";
                 }
-                else {
+                else
+                {
                     // After finding available trains on the choosen route,choose a train
                     //Like in case 1,if train id found,generate a ticket
                     cout << "Choose the desired train for the selected route (ID): ";
@@ -225,7 +333,7 @@ int main()
 
 
                             vector<Carriage> filteredCarriages;        //search in available carriges and random choose a wagon
-                            for (const auto& carriage : train.getCarriages()) 
+                            for (const auto& carriage : train.getCarriages())
                             {
                                 if (carriage.getCarriageClass() == carriageClass)   //ff there is a carriage with the specified class
                                 {
@@ -236,13 +344,13 @@ int main()
                             // Verify if there are available wagons for the wanted class
                             if (filteredCarriages.empty())
                             {
-                                  cout << "No carriages available for the selected class." << endl;
-                                  break;
+                                cout << "No carriages available for the selected class." << endl;
+                                break;
                             }
 
                             //random choose a wagon from the ones available
                             int chosenCarriageIndex = rand() % filteredCarriages.size();
-                            const Carriage& chosenCarriage = filteredCarriages[chosenCarriageIndex];
+                            Carriage& chosenCarriage = filteredCarriages[chosenCarriageIndex];
 
                             //Choose a seat (random) - if there is any available
                             int occupiedSeat = chosenCarriage.getOccupiedSeats();
@@ -251,26 +359,52 @@ int main()
                                 int chosenSeat = rand() % freeSeat + 1; // Random seat index
 
                                 // Create a ticket
-                                cout << "Select passenger category (Student, Pupil, Pensioner, Advance, None): ";
-                                string passengerCategory;
-                                cin.ignore();
-                                getline(cin, passengerCategory);
+                                cout << "Select passenger category (1-Student, 2-Child, 3-Pensioner, 4-Advance, 0-None): ";
+                                int choice;
+                                cin >> choice;
 
-                                Ticket ticket(basePrice, "Purchased", train.getRoute(), train.getID(), passengerCategory); // price is an exemple
+                                string passengerCategory;
+                                switch (choice)
+                                {
+                                case 1:
+                                    passengerCategory = "Student";
+                                    break;
+                                case 2:
+                                    passengerCategory = "Child";
+                                    break;
+                                case 3:
+                                    passengerCategory = "Pensioner";
+                                    break;
+                                case 4:
+                                    passengerCategory = "Advance";
+                                    break;
+                                case 0:
+                                    passengerCategory = "None";
+                                    break;
+                                default:
+                                    cout << "Invalid choice. Please try again.\n";
+                                    return 1;
+                                }
+
+                                Ticket ticket(basePrice * train.getKilometers(), "Purchased", train.getRoute(), train.getID(), passengerCategory); // price is an exemple
+
 
                                 // Infos about ticket
-                                ticket.applyDiscount(carriageClass);
-                                ticket.displayTicketDetails(chosenCarriage.getNumber(), chosenSeat);
-
+                                ticket.applyDiscount(carriageClass);    //apply discount
+                                ticket.displayTicketDetails(chosenCarriage.getNumber(), chosenSeat);    //display infos about the ticket
+                                ticket.saveTicketToFile(train.getCarriagesCount(), chosenSeat);    //save ticket to file
+                                chosenCarriage.reduceFreeSeats(chosenCarriage);         //freeSeats-- after buying a ticket
                             }
-                            else {
+                            else
+                            {
                                 cout << "There are no free seats in the selected carriage." << endl;
                             }
                             break;
                         }
                     }
 
-                    if (!found) {
+                    if (!found)
+                    {
                         cout << "Train with ID " << searchByID << " was not found." << endl;
                     }
                 }
@@ -333,7 +467,7 @@ int main()
 
                     //random choose a wagon from the ones available
                     int chosenCarriageIndex = rand() % filteredCarriages.size();
-                    const Carriage& chosenCarriage = filteredCarriages[chosenCarriageIndex];
+                    Carriage& chosenCarriage = filteredCarriages[chosenCarriageIndex];
 
                     // Choose a seat (random) - if the is any available
                     int occupiedSeat = chosenCarriage.getOccupiedSeats();
@@ -342,17 +476,40 @@ int main()
                     {
                         int chosenSeat = rand() % freeSeat + 1; // Random seat index
                         // Create a ticket
+                        cout << "Select passenger category (1-Student, 2-Child, 3-Pensioner, 4-Advance, 0-None): ";
+                        int choice;
+                        cin >> choice;
 
-                        cout << "Select passenger category (Student, Pupil, Pensioner, Advance or None): ";
                         string passengerCategory;
-                        cin.ignore();
-                        getline(cin, passengerCategory);
+                        switch (choice)
+                        {
+                        case 1:
+                            passengerCategory = "Student";
+                            break;
+                        case 2:
+                            passengerCategory = "Child";
+                            break;
+                        case 3:
+                            passengerCategory = "Pensioner";
+                            break;
+                        case 4:
+                            passengerCategory = "Advance";
+                            break;
+                        case 0:
+                            passengerCategory = "None";
+                            break;
+                        default:
+                            cout << "Invalid choice. Please try again.\n";
+                            return 1;
+                        }
 
-                        Ticket ticket(basePrice, "Purchased", chosenTrain.getRoute(), chosenTrain.getID(), passengerCategory); // price is an exemple-50
+                        Ticket ticket(basePrice * chosenTrain.getKilometers(), "Purchased", chosenTrain.getRoute(), chosenTrain.getID(), passengerCategory); // price is an exemple-50
 
                         // Infos about ticket
-                        ticket.applyDiscount(carriageClass);
-                        ticket.displayTicketDetails(chosenCarriage.getNumber(), chosenSeat);
+                        ticket.applyDiscount(carriageClass);    //apply discount
+                        ticket.displayTicketDetails(chosenCarriage.getNumber(), chosenSeat);    //display infos about the ticket
+                        ticket.saveTicketToFile(chosenTrain.getCarriagesCount(), chosenSeat);    //save ticket to file
+                        chosenCarriage.reduceFreeSeats(chosenCarriage);         //freeSeats-- after buying a ticket
                     }
                     else
                     {
@@ -374,10 +531,20 @@ int main()
 
         case 4:
         {
-            cout << "Your ticket information." << endl;
+            ifstream inFile("ticket.txt");
+            if (inFile.is_open()) {
+                string line;
+                cout << "Your purchased tickets:\n";
+                while (getline(inFile, line)) {
+                    cout << line << "\n";
+                }
+                inFile.close();
+            }
+            else {
+                cout << "No tickets purchased yet or file missing.\n";
+            }
             break;
         }
-
         case 5:
         {
             cout << "Thank you for using the train booking system!" << endl;

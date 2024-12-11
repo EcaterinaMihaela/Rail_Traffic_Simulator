@@ -1,211 +1,211 @@
 IR 72 "Bucuresti Nord-Curtici" 6 607 05:05 16:56
-Bucuresti Nord,05:05
-Videle,05:30
-Rosiori Nord,05:50
-Caracal,06:10
-Craiova,06:40
-Filiasi,07:00
-Strehaia HC,07:20
-Balota,07:40
-Drobeta Turnu Severin,08:00
-Orsova,08:30
-Baile Herculane,09:00
-Caransebes,09:20
-Lugoj,09:50
-Timisoara Nord,10:10
-Arad,10:40
-Curtici,11:00
+Bucuresti Nord,05:05,1
+Videle,05:30,3
+Rosiori Nord,05:50,2
+Caracal,06:10,1
+Craiova,06:40,3
+Filiasi,07:00,1
+Strehaia HC,07:20,2
+Balota,07:40,4
+Drobeta Turnu Severin,08:00,5
+Orsova,08:30,2
+Baile Herculane,09:00,2
+Caransebes,09:20,2
+Lugoj,09:50,2
+Timisoara Nord,10:10,4
+Arad,10:40,3
+Curtici,11:00,1
 STOP
 
 IRN 78 "Bucuresti Nord-Curtici" 5 607 21:00 09:14
-Bucuresti Nord,05:05
-Videle,05:30
-Rosiori Nord,05:50
-Caracal,06:10
-Craiova,06:40
-Filiasi,07:00
-Strehaia HC,07:20
-Balota,07:40
-Drobeta Turnu Severin,08:00
-Orsova,08:30
-Baile Herculane,09:00
-Caransebes,09:20
-Lugoj,09:50
-Timisoara Nord,10:10
-Arad,10:40
-Curtici,11:00
+Bucuresti Nord,05:05,3
+Videle,05:30,2
+Rosiori Nord,05:50,2
+Caracal,06:10,5
+Craiova,06:40,3
+Filiasi,07:00,1
+Strehaia HC,07:20,3
+Balota,07:40,5
+Drobeta Turnu Severin,08:00,1
+Orsova,08:30,2
+Baile Herculane,09:00,1
+Caransebes,09:20,2
+Lugoj,09:50,4
+Timisoara Nord,10:10,1
+Arad,10:40,5
+Curtici,11:00,2
 STOP
 
 IR 1724 "Bucuresti Nord-Craiova" 5 200 05:05 08:05
-Bucuresti Nord,05:05
-Videle,05:30
-Rosiori Nord,05:50
-Caracal,06:10
-Craiova,06:40
+Bucuresti Nord,05:05,2
+Videle,05:30,1
+Rosiori Nord,05:50,1
+Caracal,06:10,2
+Craiova,06:40,2
 STOP
 
 IR 74 "Bucuresti Nord-Timisoara Nord" 6 350 06:05 10:10
-Bucuresti Nord,06:05
-Ploiesti Sud,06:25
-Brasov,06:50
-Sighisoara,08:00
-Arad,09:35
-Timisoara Nord,10:10
+Bucuresti Nord,06:05,2
+Ploiesti Sud,06:25,2
+Brasov,06:50,2
+Sighisoara,08:00,1
+Arad,09:35,2
+Timisoara Nord,10:10,3
 STOP
 
 IR 1725 "Craiova-Bucuresti Nord" 4 200 18:00 21:00
-Craiova,18:00
-Caracal,18:20
-Rosiori Nord,18:40
-Videle,19:00
-Bucuresti Nord,21:00
+Craiova,18:00,4
+Caracal,18:20,2
+Rosiori Nord,18:40,3
+Videle,19:00,3
+Bucuresti Nord,21:00,2
 STOP
 
 R 111 "Cluj Napoca-Bucuresti Nord" 4 300 06:00 10:00
-Cluj Napoca,06:00
-Turda,06:15
-Targu Mures,07:10
-Brasov,08:00
-Bucuresti Nord,10:00
+Cluj Napoca,06:00,2
+Turda,06:15,1
+Targu Mures,07:10,3
+Brasov,08:00,2
+Bucuresti Nord,10:00,1
 STOP
 
 IRN 348 "Arad-Craiova-Bucuresti Nord" 5 607 05:00 09:55
-Arad,05:00
-Timisoara Nord,05:40
-Caransebes,06:20
-Drobeta Turnu Severin,07:30
-Craiova,08:10
-Filiasi,08:40
-Bucuresti Nord,09:55
+Arad,05:00,1
+Timisoara Nord,05:40,2
+Caransebes,06:20,1
+Drobeta Turnu Severin,07:30,1
+Craiova,08:10,1
+Filiasi,08:40,2
+Bucuresti Nord,09:55,2
 STOP
 
 IRN 349 "Bucuresti Nord-Craiova-Arad" 5 608 19:00 23:40
-Bucuresti Nord,19:00
-Filiasi,20:15
-Craiova,20:30
-Drobeta Turnu Severin,21:00
-Caransebes,22:10
-Timisoara Nord,23:00
-Arad,23:40
+Bucuresti Nord,19:00,1
+Filiasi,20:15,1
+Craiova,20:30,2
+Drobeta Turnu Severin,21:00,3
+Caransebes,22:10,3
+Timisoara Nord,23:00,3
+Arad,23:40,2
 STOP
 
 R 9502 "Craiova-Arad" 5 609 18:05 21:00
-Craiova,18:05
-Filiasi,18:30
-Drobeta Turnu Severin,19:00
-Caransebes,19:20
-Timisoara Nord,20:40
-Arad,21:00
+Craiova,18:05,4
+Filiasi,18:30,2
+Drobeta Turnu Severin,19:00,5
+Caransebes,19:20,6
+Timisoara Nord,20:40,4
+Arad,21:00,2
 STOP
 
 IRN 79 "Bucuresti Nord-Curtici" 5 610 08:00 12:00
-Bucuresti Nord,08:00
-Timisoara Nord,10:30
-Arad,11:10
-Curtici,12:00
+Bucuresti Nord,08:00,2
+Timisoara Nord,10:30,2
+Arad,11:10,3
+Curtici,12:00,1
 STOP
 
 IR 1591 "Bucuresti Nord-Brasov" 5 611 17:40 19:30
-Bucuresti Nord,17:40
-Targoviste,18:25
-Ploiesti,18:50
-Brasov,19:30
+Bucuresti Nord,17:40,2
+Targoviste,18:25,2
+Ploiesti,18:50,3
+Brasov,19:30,1
 STOP
 
 IR 73 "Bucuresti Nord-Sighisoara" 5 612 16:20 19:30
-Bucuresti Nord,16:20
-Ploiesti,16:55
-Brasov,18:00
-Sighisoara,19:30
+Bucuresti Nord,16:20,2
+Ploiesti,16:55,3
+Brasov,18:00,6
+Sighisoara,19:30,3
 STOP
 
 IR 1590 "Drobeta Turnu Severin-Bucuresti Nord" 8 611 15:54 22:00
-Drobeta Turnu Severin,15:54
-Strehaia HC,16:09
-Filiasi,16:30
-Craiova,18:20
-Caracal,19:30
-Draganesti Olt,19:50
-Rosiorii Nord,20:05
-Videle,20:30
-Bucuresti Nord,22:00
+Drobeta Turnu Severin,15:54,5
+Strehaia HC,16:09,4
+Filiasi,16:30,4
+Craiova,18:20,2
+Caracal,19:30,2
+Draganesti Olt,19:50,1
+Rosiorii Nord,20:05,1
+Videle,20:30,1
+Bucuresti Nord,22:00,5
 STOP
 
 IR 1695 "Bucuresti Nord-Curtici" 5 607 21:45 01:52
-Bucuresti Nord, 21:45
-Videle, 22:10
-Rosiori Nord, 22:30
-Caracal, 22:50
-Craiova, 23:20
-Filiasi, 23:40
-Strehaia HC, 01:52
-Balota, 02:10
-Drobeta Turnu Severin, 02:30
-Orsova, 03:00
-Baile Herculane, 03:30
-Caransebes, 03:50
-Lugoj, 04:20
-Timisoara Nord, 04:40
-Arad, 05:10
-Curtici, 05:30
+Bucuresti Nord, 21:45,5
+Videle, 22:10,1
+Rosiori Nord, 22:30,3
+Caracal, 22:50,1
+Craiova, 23:20,2
+Filiasi, 23:40,1
+Strehaia HC, 01:52,1
+Balota, 02:10,1
+Drobeta Turnu Severin, 02:30,2
+Orsova, 03:00,1
+Baile Herculane, 03:30,2
+Caransebes, 03:50,1
+Lugoj, 04:20,1
+Timisoara Nord, 04:40,3
+Arad, 05:10,5
+Curtici, 05:30,3
 STOP
 
 IR 1696 "Curtici-Bucuresti Nord" 5 607 20:16 03:37
-Curtici, 20:16
-Timisoara Nord, 20:36
-Lugoj, 21:00
-Caransebes, 21:30
-Baile Herculane, 21:50
-Orsova, 22:20
-Drobeta Turnu Severin, 22:40
-Balota, 23:00
-Filiasi, 23:20
-Craiova, 23:40
-Caracal, 00:00
-Rosiori Nord, 00:20
-Videle, 00:40
-Bucuresti Nord, 01:10
+Curtici, 20:16,3
+Timisoara Nord, 20:36,4
+Lugoj, 21:00,1
+Caransebes, 21:30,1
+Baile Herculane, 21:50,2
+Orsova, 22:20,1
+Drobeta Turnu Severin, 22:40,1
+Balota, 23:00,1
+Filiasi, 23:20,1
+Craiova, 23:40,1
+Caracal, 00:00,2
+Rosiori Nord, 00:20,3
+Videle, 00:40,3
+Bucuresti Nord, 01:10,3
 STOP
 
 R 9501 "Filiasi-Strehaia HC" 1 47 04:16 04:49
-Filiasi, 04:16
-Gura Motrului, 04:30
-Butoiesti, 04:38
-Lunca Banului, 04:42
-Strehaia HC, 04:49
+Filiasi, 04:16,2
+Gura Motrului, 04:30,1
+Butoiesti, 04:38,1
+Lunca Banului, 04:42,1
+Strehaia HC, 04:49,1
 STOP
 
 R 9502 "Drobeta Turnu Severin-Strehaia HC" 1 34 04:20 05:42
-Drobeta Turnu Severin, 04:20
-Erghevita, 04:40
-Valea Alba, 04:50
-Balota, 05:00
-Girnita, 05:10
-Prunisor, 05:15
-Igiroasa, 05:22
-Timna, 05:30
-Ciochiuta, 05:35
-Strehaia HC, 05:42
+Drobeta Turnu Severin, 04:20,1
+Erghevita, 04:40,1
+Valea Alba, 04:50,1
+Balota, 05:00,1
+Girnita, 05:10,1
+Prunisor, 05:15,1
+Igiroasa, 05:22,1
+Timna, 05:30,1
+Ciochiuta, 05:35,1
+Strehaia HC, 05:42,1
 STOP
 
 IR 2 "Bucuresti Nord-Iasi" 10 390 06:30 13:00
-Bucuresti Nord, 06:30
-Ploiesti Vest, 07:00
-Buzau, 07:30
-Focsani, 08:00
-Roman, 08:30
-Iasi, 13:00
+Bucuresti Nord, 06:30,3
+Ploiesti Vest, 07:00,3
+Buzau, 07:30,2
+Focsani, 08:00,2
+Roman, 08:30,2
+Iasi, 13:00,2
 STOP
 
 IR 75 "Bucuresti Nord-Cluj Napoca" 12 550 21:00 06:00
-Bucuresti Nord, 21:00
-Ploiesti Vest, 21:30
-Buzau, 22:00
-Focsani, 22:30
-Roman, 23:00
-Bacau, 23:30
-Moinesti, 00:00
-Comanesti, 00:30
-Targu Ocna, 01:00
-Cluj Napoca, 06:00
+Bucuresti Nord, 21:00,2
+Ploiesti Vest, 21:30,2
+Buzau, 22:00,2
+Focsani, 22:30,3
+Roman, 23:00,4
+Bacau, 23:30,1
+Moinesti, 00:00,2
+Comanesti, 00:30,1
+Targu Ocna, 01:00,2
+Cluj Napoca, 06:00,4
 STOP

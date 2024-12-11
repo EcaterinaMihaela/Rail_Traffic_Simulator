@@ -46,7 +46,7 @@ public:
 
     void applyDiscount(int carriageClass);
     void displayTicketDetails(int carriageNumber, int chosenSeat) const;
-
+    void saveTicketToFile(int carriageNumber, int chosenSeat);
 };
 
 #endif

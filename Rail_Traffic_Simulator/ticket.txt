@@ -1,0 +1,71 @@
+
+======================================Ticket purchased!================================================
+Category: Child
+Ticket ID: 132365
+Base Price: 971.2
+Discount: 0%
+Final Price: 971.2
+Route: Bucuresti Nord-Curtici
+Train: 72
+Purchase Date: 2024-12-02
+Ticket Status: Purchased
+Carriage: 6
+Seat: 12
+=========================================================================================================
+
+======================================Ticket purchased!================================================
+Category: Student
+Ticket ID: 102408
+Base Price: 971.2
+Discount: 90%
+Final Price: 97.12
+Route: Bucuresti Nord-Curtici
+Train: 78
+Purchase Date: 2024-12-02
+Ticket Status: Purchased
+Carriage: 5
+Seat: 17
+=========================================================================================================
+
+======================================Ticket purchased!================================================
+Category: Student
+Ticket ID: 107296
+Base Price: 971.2
+Discount: 90%
+Final Price: 97.12
+Route: Bucuresti Nord-Curtici
+Train: 72
+Purchase Date: 2024-12-02
+Ticket Status: Purchased
+Carriage: 6
+Seat: 30
+=========================================================================================================
+
+======================================Ticket purchased!================================================
+Category: Student
+Ticket ID: 105143
+Base Price: 971.2
+Discount: 90%
+Final Price: 97.12
+Route: Bucuresti Nord-Curtici
+Train: 72
+Purchase Date: 2024-12-03
+Ticket Status: Purchased
+Carriage: 6
+Seat: 4
+=========================================================================================================
+
+
+======================================Ticket purchased!================================================
+Category: Student
+Ticket ID: 117933
+Base Price: 971.2
+Discount: 0%
+Final Price: 971.2
+Route: Bucuresti Nord-Curtici
+Train: 72
+Purchase Date: 2024-12-11
+Ticket Status: Purchased
+Carriage: 6
+Seat: 43
+=========================================================================================================

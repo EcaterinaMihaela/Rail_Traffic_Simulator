@@ -10,16 +10,18 @@ class Station
 private:
     string name;
     string arrivalTime;
+    int stationLine;
 
 public:
 
     // Constructor
-    Station(const string& name, const string& arrivalTime)
-        : name(name), arrivalTime(arrivalTime) {}
+    Station(const string& name, const string& arrivalTime, int stationLine)
+        : name(name), arrivalTime(arrivalTime), stationLine(stationLine) {}
 
     // Access functions
     string getName() const;
     string getArrivalTime() const;
+    int getStationLine() const;
 };
 
 #endif
