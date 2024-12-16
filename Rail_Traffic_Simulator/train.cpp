@@ -8,18 +8,6 @@ Train::Train(const string& trainType, int id, const string& route, int carriageC
     : trainType(trainType), id(id), route(route), carriageCount(carriageCount), kilometers(kilometers),
     departureTime(departureTime), arrivalTime(arrivalTime), intermediateStations(intermediateStations) {}
 
-
-/*void Train::saveToFile(std::ofstream& outFile)
-{
-    outFile << trainType << " " << id << " " << route << " " << carriageCount << " " << kilometers << " " << departureTime << " " << arrivalTime << endl;
-
-    for (const auto& station : intermediateStations)
-    {
-        outFile << station.getName() << "," << station.getArrivalTime() << " ";
-    }
-    outFile << "STOP" << endl;
-}*/
-
 vector<Train> Train::readFromFile(ifstream& file)
 {
     vector<Train> trains;

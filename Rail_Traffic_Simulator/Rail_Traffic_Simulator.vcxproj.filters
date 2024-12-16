@@ -30,6 +30,9 @@
     <ClCompile Include="station.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="run.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="train.h">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="station.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="run.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

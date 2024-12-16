@@ -9,7 +9,8 @@
 
 using namespace std;
 
-class Train {
+class Train
+{
 private:
 	string trainType;
 	int id;

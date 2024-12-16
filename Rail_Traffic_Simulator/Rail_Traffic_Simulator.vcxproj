@@ -128,12 +128,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Rail_Traffic_Simulator.cpp" />
+    <ClCompile Include="run.cpp" />
     <ClCompile Include="station.cpp" />
     <ClCompile Include="ticket.cpp" />
     <ClCompile Include="train.cpp" />
     <ClCompile Include="carriage.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="run.h" />
     <ClInclude Include="station.h" />
     <ClInclude Include="ticket.h" />
     <ClInclude Include="train.h" />

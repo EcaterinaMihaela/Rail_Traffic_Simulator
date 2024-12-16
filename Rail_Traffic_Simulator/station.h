@@ -15,13 +15,18 @@ private:
 public:
 
     // Constructor
-    Station(const string& name, const string& arrivalTime, int stationLine)
-        : name(name), arrivalTime(arrivalTime), stationLine(stationLine) {}
+    Station(const string& name, const string& arrivalTime, int stationLine);
 
     // Access functions
     string getName() const;
     string getArrivalTime() const;
     int getStationLine() const;
+
+    /*friend ostream& operator<<(ostream& os, const Station& station)
+    {
+        os << station.name;
+        return os;
+    }*/
 };
 
 #endif
