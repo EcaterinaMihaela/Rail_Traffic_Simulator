@@ -22,11 +22,7 @@ public:
     string getArrivalTime() const;
     int getStationLine() const;
 
-    /*friend ostream& operator<<(ostream& os, const Station& station)
-    {
-        os << station.name;
-        return os;
-    }*/
+
 };
 
 #endif

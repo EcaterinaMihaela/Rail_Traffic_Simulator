@@ -73,7 +73,7 @@ vector<Train> Train::readFromFile(ifstream& file)
 
 void Train::display() const
 {
-    cout << "Train " << trainType << " " << id << ", operates on route " << route
+    cout << "\nTrain " << trainType << " " << id << ", operates on route " << route
         << ", with " << carriageCount << " carriages, covering a distance of "
         << kilometers << " kilometers.\nIt departs the station at "
         << departureTime << " and will arrive at the destination at "

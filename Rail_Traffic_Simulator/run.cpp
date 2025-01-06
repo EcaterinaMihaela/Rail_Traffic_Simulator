@@ -77,17 +77,25 @@ void Run::CaseChooseRoute(const vector<Train>& trains)
 
         // Let the user select a route
         int routeChoice;
-        cout << "Enter the number corresponding to the route: ";
-        cin >> routeChoice;
+        string departureStation, arrivalStation;
 
-        if (routeChoice < 1 || routeChoice > static_cast<int>(routes.size()))
+        while (true)
         {
-            throw out_of_range("Invalid choice! Please try again.");
-        }
+            cout << "Enter the number corresponding to the route: ";
+            cin >> routeChoice;
 
-        // Store the selected departure/arrival stations
-        string departureStation = routes[routeChoice - 1].first;
-        string arrivalStation = routes[routeChoice - 1].second;
+            if (routeChoice >= 1 && routeChoice <= static_cast<int>(routes.size()))
+            {
+                // Store the selected departure/arrival stations
+                departureStation = routes[routeChoice - 1].first;
+                arrivalStation = routes[routeChoice - 1].second;
+                break; // Exit the loop
+            }
+            else
+            {
+                cout << "\nInvalid choice! Please enter a number between 1 and " << routes.size() << ".\n";
+            }
+        }
 
         // Displaying the available trains for the selected route
         cout << "Available trains from \"" << departureStation << "\" to \"" << arrivalStation << "\":" << endl;
@@ -221,14 +229,24 @@ void Run::CaseBuyTicket(vector<Train>& trains)
             cout << i + 1 << ". " << routes[i].first << " -> " << routes[i].second << "\n";
         }
 
-        // Let the user select a route
         int routeChoice;
-        cout << "\nEnter the number corresponding to the route: ";
-        cin >> routeChoice;
 
-        if (routeChoice < 1 || routeChoice > static_cast<int>(routes.size()))
+        while (true)
         {
-            throw out_of_range("\nInvalid choice! Please try again.");
+            // Let the user select a route
+            cout << "\nEnter the number corresponding to the route: ";
+            cin >> routeChoice;
+
+            if (routeChoice < 1 || routeChoice > static_cast<int>(routes.size()))
+            {
+                cout<<"\nInvalid choice! Please try again.";
+            }
+            else
+            {
+                cout << "You selected route: " << routes[routeChoice - 1].first
+                    << " -> " << routes[routeChoice - 1].second << "\n";
+                break; 
+            }
         }
 
         // Store the selected departure/arrival stations
@@ -356,9 +374,10 @@ void Run::CaseBuyTicket(vector<Train>& trains)
 
 
                         // Infos about ticket
+                        ticket.setTravelDate(train.getDepartureTime());
                         ticket.applyDiscount(carriageClass);    //apply discount
-                        ticket.displayTicketDetails(chosenCarriage.getNumber(), chosenSeat, departureStation, arrivalStation);    //display infos about the ticket
-                        ticket.saveTicketToFile(train.getCarriagesCount(), chosenSeat, departureStation, arrivalStation);    //save ticket to file
+                        ticket.displayTicketDetails(chosenCarriage.getNumber(), chosenSeat, departureStation, arrivalStation,carriageClass);    //display infos about the ticket
+                        ticket.saveTicketToFile(train.getCarriagesCount(), chosenSeat, departureStation, arrivalStation,carriageClass);    //save ticket to file
                         chosenCarriage.reduceFreeSeats(chosenCarriage);         //freeSeats-- after buying a ticket
                     }
                     else
@@ -396,6 +415,7 @@ void Run::CaseBuyTicket(vector<Train>& trains)
         {
             if (train.getID() == IDTrain)
             {
+                train.display();
                 chosenTrain = train;
                 found = true;
                 break;
@@ -469,7 +489,7 @@ void Run::CaseBuyTicket(vector<Train>& trains)
             vector<Carriage> filteredCarriages;        //search in available carriges and random choose a wagon
             for (const auto& carriage : chosenTrain.getCarriages())
             {
-                if (carriage.getCarriageClass() == carriageClass)   //ff there is a carriage with the specified class
+                if (carriage.getCarriageClass() == carriageClass)   //if there is a carriage with the specified class
                 {
                     filteredCarriages.push_back(carriage);    //add it in the filtered carriages vector
                 }
@@ -523,9 +543,10 @@ void Run::CaseBuyTicket(vector<Train>& trains)
                 Ticket ticket(basePrice * chosenTrain.getKilometers(), "Purchased", chosenTrain.getRoute(), chosenTrain.getID(), passengerCategory); // price is an exemple-50
 
                 // Infos about ticket
+                ticket.setTravelDate(chosenTrain.getDepartureTime());
                 ticket.applyDiscount(carriageClass);    //apply discount
-                ticket.displayTicketDetails(chosenCarriage.getNumber(), chosenSeat, departureStation, arrivalStation);    //display infos about the ticket
-                ticket.saveTicketToFile(chosenTrain.getCarriagesCount(), chosenSeat, departureStation, arrivalStation);    //save ticket to file
+                ticket.displayTicketDetails(chosenCarriage.getNumber(), chosenSeat, departureStation, arrivalStation,carriageClass);    //display infos about the ticket
+                ticket.saveTicketToFile(chosenTrain.getCarriagesCount(), chosenSeat, departureStation, arrivalStation,carriageClass);    //save ticket to file
                 chosenCarriage.reduceFreeSeats(chosenCarriage);         //freeSeats-- after buying a ticket
             }
             else

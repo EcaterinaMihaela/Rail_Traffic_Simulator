@@ -18,6 +18,7 @@ private:
     string route;
     int trainID;
     string purchaseDate;
+    string travelDate;
     string category;  //Category of the pasager:Student,etc
 
 public:
@@ -26,10 +27,12 @@ public:
     int getTicketID() const;
     string getPurchaseDate() const;
     double getPrice() const;
+    string getTravelDate() const;
 
+    void setTravelDate(const string& departureTime);
     void applyDiscount(int carriageClass);
-    void displayTicketDetails(int carriageNumber, int chosenSeat, string departureStation, string arrivalStation) const;
-    void saveTicketToFile(int carriageNumber, int chosenSeat, string departureStation, string arrivalStation);
+    void displayTicketDetails(int carriageNumber, int chosenSeat, string departureStation, string arrivalStation,int classType) const;
+    void saveTicketToFile(int carriageNumber, int chosenSeat, string departureStation, string arrivalStation,int classType);
 };
 
 #endif
